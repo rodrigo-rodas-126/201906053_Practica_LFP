@@ -2,14 +2,10 @@ import re
 import webbrowser
 from tkinter import filedialog
 
-
-
 memoria = []
 objectos = []
 lista_ayuda = []
 nuev_lista = []
-
-
 
 class Linea:
     def __init__(self, id, lista, instruccion1=False, instruccion2=None):
@@ -24,41 +20,6 @@ class Linea:
             print(str(self.id) + str(self.lista) + str(self.instruccion1))
         else:
             print(str(self.id) + str(self.lista) + str(self.instruccion1) + str(self.instruccion2))
-    """
-    def ordenar(self):
-        lista1 = self.lista
-        #print(lista1)
-        if self.instruccion1 == False:
-            return
-        else:
-            cadena = ''
-            for i in range(len(lista1)):
-                peque = min(lista1)
-                cadena += peque + ', '
-                lista1.remove(peque)
-            return cadena
-    """
-    """
-    def buscar(self):
-        nuev_lista = self.lista
-        #print(nuev_lista)
-        if self.instruccion2 == None:
-            return
-        else:
-            contador = 0
-            validos = '{'
-            #print(self.lista)
-            for elemento in self.lista:
-                contador += 1
-                if elemento == self.instruccion2:
-                    validos = validos + str(contador)
-                    if contador < (len(nuev_lista) - 1):
-                        validos += ','
-                else:
-                    continue
-            validos += '}'
-            return validos
-    """
 
 def ordenar(Linea):
     for elemao in Linea.lista:
@@ -155,7 +116,7 @@ while True:
     if comando == '1':
         memoria.clear()
         objectos.clear()
-        file = open('entrada.txt', 'r')
+        file = filedialog.askopenfile(title="abrir")
         for line in file:
             memoria.append(line.replace('\n', ''))
         #print(memoria)
